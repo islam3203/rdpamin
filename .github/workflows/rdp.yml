@@ -30,7 +30,7 @@ jobs:
         Start-Process -FilePath "$env:USERPROFILE\playit.exe" -ArgumentList "--secret $env:PLAYIT_AUTH_KEY" -NoNewWindow -Wait
         Start-Process -FilePath "$env:USERPROFILE\playit.exe" -NoNewWindow
 
-    # Prevent workflow to stop for 15 minutes
+    # Prevent workflow to stop for 2 minutes
     - name: Keep the GitHub Action Runner Alive
       run: |
-          Start-Sleep -Seconds 900  # Keep the runner alive for 15 minutes
+          Start-Sleep -Seconds 120  # Keep the runner alive for 2 minutes
