@@ -6,7 +6,7 @@ on:
 jobs:
   setup-rdp-tunnel:
     runs-on: windows-latest
-    timeout-minutes: 10  # Explicit timeout for the entire job (10 minutes)
+    timeout-minutes: 1440  # Timeout for the entire job (24 hours)
 
     steps:
     - name: Check out the repository
@@ -31,7 +31,7 @@ jobs:
         Start-Process -FilePath "$env:USERPROFILE\playit.exe" -ArgumentList "--secret $env:PLAYIT_AUTH_KEY" -NoNewWindow -Wait
         Start-Process -FilePath "$env:USERPROFILE\playit.exe" -NoNewWindow
 
-    # Prevent workflow from stopping for 2 minutes
+    # Prevent workflow from stopping for 24 hours
     - name: Keep the GitHub Action Runner Alive
       run: |
-          Start-Sleep -Seconds 120  # Keep the runner alive for 2 minutes
+          Start-Sleep -Seconds 86400  # Keep the runner alive for 24 hours
